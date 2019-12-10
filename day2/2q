@@ -1,0 +1,29 @@
+program_str = '1,1,1,4,99,5,6,0,99'
+
+program = [int(n) for n in program_str.split(',')]
+
+i = 0
+
+opcode = program[i]
+
+while opcode != 99:
+    opcode_seq = program[i:i+4]
+    print(opcode_seq)
+    if len(opcode_seq) == 4:
+        p1 = opcode_seq[1]
+        p2 = opcode_seq[2]
+        p3 = opcode_seq[3]
+
+        if opcode == 1:
+            program[p3] = program[p1] + program[p2]
+
+        elif opcode == 2:
+            program[p3] = program[1] * program[p2]
+
+        else:
+            print('something went wrong')
+            break
+
+        i = i+4
+
+print(program)
